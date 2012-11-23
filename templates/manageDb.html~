@@ -1,0 +1,21 @@
+{% extends "baseClc.html" %}
+
+{% block content %}
+
+{% if user.name == "iago" %}
+<form method="post">
+<label for="articulo">Artículo</label><br /><textarea name="articulo" class="boxsizingBorder" rows="10"></textarea><br />
+<label for="titulo">Título</label><br /><input type="text" name="titulo" class="boxsizingBorder" /><br />
+<label for="capitulo">Capítulo</label><br /><textarea name="capitulo" class="boxsizingBorder"></textarea><br />
+<label for="seccion">Sección</label><br /><textarea name="seccion" class="boxsizingBorder"></textarea><br />
+<input type="number" name="numero" />
+<input type="submit" value="Aceptar" />
+</form>
+
+{% else %}
+<p>No tienes permiso de administrador</p>
+{% endif %}
+
+{% endblock %}
+
+

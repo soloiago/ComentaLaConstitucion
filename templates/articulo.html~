@@ -1,0 +1,131 @@
+{% extends "baseClc.html" %}
+
+{% block content %}
+
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript">
+	google.load("visualization", "1", {packages:["corechart"]});
+	google.setOnLoadCallback(drawChart);
+	function drawChart() {
+	var data = google.visualization.arrayToDataTable([
+	  ['Voto', 'Número de votos'],
+	  ['Lo dejaría como está', {{nota['a']}}],
+	  ['Lo cambiaría', {{nota['b']}}],
+	  ['Lo eleminaría', {{nota['c']}}]
+	]);
+
+	var options = {
+	  title: 'Votación'
+	};
+
+	var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+	chart.draw(data, options);
+}
+</script>
+
+{% for a in articulo %}
+<div id="articulo">
+<h2>Artículo {{a.numero}}</h2>
+<p class="subtitle">{{a.titulo}}
+	{% if a.capitulo %}
+ 	>> {{a.capitulo}} 
+	{% endif %}
+
+	{% if a.seccion %}
+	>> {{a.seccion}}
+	{% endif %}
+</p>
+<p>
+{{a.articulo}}
+</p>
+</div>
+{% endfor %}
+
+<div id="evaluacion">
+<p class="subtitle">Evaluación</p>
+<p id="chart_div" style="margin-left: auto; margin-right: auto; width: 500px; height: 400px;"></p>
+</div>
+
+{% if user %}
+<div id="newComment">
+<p class="subtitle">Votar</p>
+<form method="post" action="/votar" ">
+<input type="hidden" name="numero" value="{{numero}}">
+
+{% if voto == 0 %}
+<input type="radio" name="opinion" value="0" checked>Lo dejaría como está<br />
+{% else %}
+<input type="radio" name="opinion" value="0">Lo dejaría como está<br />
+{% endif %}
+
+{% if voto == 1 %}
+<input type="radio" name="opinion" value="1" checked>Lo cambiaría<br />
+{% else %}
+<input type="radio" name="opinion" value="1">Lo cambiaría<br />
+{% endif %}
+
+{% if voto == 2 %}
+<input type="radio" name="opinion" value="2" checked>Lo eliminaría<br />
+{% else %}
+<input type="radio" name="opinion" value="2">Lo eliminaría<br /> 
+{% endif %}
+
+<input type="Submit" class="sendButton" value="Votar" />
+
+<br style="clear:right" />
+</form>
+
+<form method="post" action="/insertComment">
+<p class="subtitle">Comentar</p>
+<textarea name="comment" class="boxsizingBorder" rows="4"></textarea><br />
+<input type="hidden" name="numero" value="{{numero}}">
+<input type="hidden" name="replyComment" value="0">
+<input type="Submit" class="sendButton" value="enviar" />
+<br style="clear:right" />
+</form>
+</div>
+{% else %}
+<p id="newComment">¿Quieres comentar/votar? <a href="/login" target="_blank">Entra</a> o <a href="/signup" target="_blank">regístrate</a></p>
+{% endif %}
+
+{% for c in comments %}
+<div class="comment" style="margin-left:{{c['margin']}}px">
+<p><a href="user?id={{c['comment'].name}}">{{c['comment'].name}}</a> - {{c['comment'].created}}</p>
+
+{{c['comment'].created.strftime("%a, %d %B %Y %H:%M:%S")}}
+
+<p>{{c['comment'].comment}}</p>
+{% if user %}
+<button id="b{{c['comment'].get_id()}}" class="sendButton">Responder</button>
+<br style="clear:right" />
+{% endif %}
+
+</div>
+
+<div id="c{{c['comment'].get_id()}}" style="margin-left:{{c['margin']}}px">
+{% if user %}
+<form method="post" action="/insertComment">
+<p>Respuesta: </p>
+<textarea name="comment" class="boxsizingBorder"></textarea>
+<input type="hidden" name="numero" value="{{numero}}">
+<input type="hidden" name="replyComment" value="{{c['comment'].get_id()}}">
+<input type="Submit" class="sendButton" value="enviar" />
+<br style="clear:right" />
+</form>
+{% endif %}
+
+</div>
+
+<script type='text/javascript'>
+	$("#c{{c['comment'].get_id()}}").hide();
+	$("#b{{c['comment'].get_id()}}").click(function() {
+	$("#c{{c['comment'].get_id()}}").fadeToggle('slow', 'linear');
+	});
+</script>
+
+<br />
+{% endfor %}
+
+{% endblock %}
+
+

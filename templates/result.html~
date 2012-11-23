@@ -1,0 +1,23 @@
+{% extends "baseClc.html" %}
+
+{% block content %}
+
+{% for a in articulosMatched %}
+<h2>Artículo {{a.numero}}</h2>
+<p class="subtitle">{{a.titulo}}
+	{% if a.capitulo %}
+ 	>> {{a.capitulo}} 
+	{% endif %}
+	{% if a.seccion %}
+	>> {{a.seccion}}
+	{% endif %}
+</p>
+<p>
+{{a.articulo}}
+</p>
+{% endfor %}
+
+
+{% endblock %}
+
+

@@ -1,0 +1,275 @@
+<!DOCTYPE HTML>
+<!--
+	Royale: A responsive HTML5 website template by HTML5Templates.com
+	Released for free under the Creative Commons Attribution 3.0 license (html5templates.com/license)
+	Visit http://html5templates.com for more great templates or follow us on Twitter @HTML5T
+-->
+<html>
+<head>
+<title>Comenta la Constitución
+{% if articulo %}
+	{{articulo.titulo}} 
+	{% set titulo = articulo.titulo %}
+
+	{% if articulo.capitulo %}
+	>> {{articulo.capitulo}} 
+	{% set capitulo = articulo.capitulo %}
+	{% endif %}
+
+	{% if articulo.seccion %}
+	>> {{articulo.seccion}}
+	{% set seccion = articulo.seccion%}
+	{% endif %}
+
+	>> Artículo {{articulo.numero}}
+{% endif %}
+
+</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+<noscript>
+
+<link rel="stylesheet" href="static/css/accordion.css" />
+</noscript>
+<script src="static/css/5grid/jquery.js"></script>
+<script src="static/javascript/jquery.accordion.js"></script>
+<script src="static/css/5grid/init.js?use=mobile,desktop,1000px&amp;mobileUI=1&amp;mobileUI.theme=none"></script>
+<script type="text/javascript" charset="utf-8">
+$(function(){
+      $('#menu').accordion({keepOpen: false, startingOpen:'#open'});
+});
+</script>
+<!--[if IE 9]><link rel="stylesheet" href="css/style-ie9.css" /><![endif]-->
+</head><body class="two-column">
+
+<div id="footer">
+	<section>
+		<p>&copy; Comenta la Constitución | Design: <a href="http://html5templates.com/">HTML5Templates.com</a></p>
+	</section>
+</div>
+
+<div id="wraperAll">
+	<div id="header-wrapper">
+		<header id="header" class="5grid-layout">
+			<div class="row">
+				<div class="12u"> 
+					<!-- Logo -->
+					<h1><a href="/" class="mobileUI-site-name">La Constitución Española de 1978</a></h1>
+					<!-- Nav -->
+					<nav class="mobileUI-site-nav"> 
+						<form method="post" action="search">
+						<input type="text" name="q" id="searchText"/>
+						{% if user %}
+							<a href="user?id={{user.name}}">{{user.name}}</a><a href="logout">Logout</a>
+						{% else %}
+							<a href="login">Login</a>
+						{% endif %}
+						</form>
+					</nav>
+				</div>
+			</div>
+		</header>
+	</div>
+	<div id="wrapper">
+		<div class="5grid-layout">
+			<div id="page">
+				<div class="row">
+					<div class="12u">
+						<div class="row">
+						<div class="8u">
+							<section id="content">
+													
+								{% block content %}
+								{% endblock %}
+							</section>
+						</div>
+						<div class="4u">
+							<section id="sidebar">
+							
+								<ul id="menu">
+								<li><a href="#">Título Preliminar</a>
+									<ul{% if titulo == "Título Preliminar" %} class="open" {% endif %}>
+										<li><a class="articuloBold" href="/art?n=1"><b>Artículo 1</a></li>
+										<li><a class="articuloBold" href="/art?n=2">Artículo 2</a></li>
+										<li><a class="articuloBold" href="/art?n=3">Artículo 3</a></li>
+										<li><a class="articuloBold" href="/art?n=4">Artículo 4</a></li>
+										<li><a class="articuloBold" href="/art?n=5">Artículo 5</a></li>
+										<li><a class="articuloBold" href="/art?n=6">Artículo 6</a></li>
+										<li><a class="articuloBold" href="/art?n=7">Artículo 7</a></li>
+										<li><a class="articuloBold" href="/art?n=8">Artículo 8</a></li>
+										<li><a class="articuloBold" href="/art?n=9">Artículo 9</a></li>
+									</ul>
+								</li>
+								<li><a href="#">Título I. De los derechos y deberes fundamentales</a>
+									<ul{% if titulo == "Título I" %} class="open" {% endif %}>
+										<li><a class="articuloBold" href="/art?n=10">Artículo 10</a></li>
+										<li><a href="#">Capítulo I. De los españoles y los extrajeros</a>
+										<ul{% if capitulo == "Capítulo I" %} class="open" {% endif %}>
+											<li><a class="articuloBold" href="/art?n=11">Artículo 11</a></li>
+											<li><a class="articuloBold" href="/art?n=12">Artículo 12</a></li>
+											<li><a class="articuloBold" href="/art?n=13">Artículo 13</a><li>								
+										</ul>
+										</li>
+										<li><a href="#">Capítulo II. Derechos y libertades</a>
+										<ul{% if capitulo == "Capítulo II" %} class="open" {% endif %}>
+											<li><a class="articuloBold" href="/art?n=14">Artículo 14</a></li>
+											<li><a href="#">Sección I. De los derechos fundamentales y de las libertades públicas</a>
+											<ul{% if seccion == "Sección I" %} class="open" {% endif %}>
+												<li><a class="articuloBold" href="/art?n=15">Artículo 15</a></li>
+												<li><a class="articuloBold" href="/art?n=16">Artículo 16</a></li>
+												<li><a class="articuloBold" href="/art?n=17">Artículo 17</a></li>
+												<li><a class="articuloBold" href="/art?n=18">Artículo 18</a></li>
+												<li><a class="articuloBold" href="/art?n=19">Artículo 19</a></li>
+												<li><a class="articuloBold" href="/art?n=20">Artículo 20</a></li>
+												<li><a class="articuloBold" href="/art?n=21">Artículo 21</a></li>
+												<li><a class="articuloBold" href="/art?n=22">Artículo 22</a></li>
+												<li><a class="articuloBold" href="/art?n=23">Artículo 23</a></li>
+												<li><a class="articuloBold" href="/art?n=24">Artículo 24</a></li>
+												<li><a class="articuloBold" href="/art?n=25">Artículo 25</a></li>
+												<li><a class="articuloBold" href="/art?n=26">Artículo 26</a></li>
+												<li><a class="articuloBold" href="/art?n=27">Artículo 27</a></li>
+												<li><a class="articuloBold" href="/art?n=28">Artículo 28</a></li>
+												<li><a class="articuloBold" href="/art?n=29">Artículo 29</a></li>					
+											</ul>
+											</li>
+											<li><a href="#">Sección II. De los derechos y deberes de los ciudadanos</a>
+											<ul{% if seccion == "Sección II" %} class="open" {% endif %}>
+												<li><a class="articuloBold" href="/art?n=30">Artículo 30</a></li>
+												<li><a class="articuloBold" href="/art?n=31">Artículo 31</a></li>
+												<li><a class="articuloBold" href="/art?n=32">Artículo 32</a></li>
+												<li><a class="articuloBold" href="/art?n=33">Artículo 33</a></li>
+												<li><a class="articuloBold" href="/art?n=34">Artículo 34</a></li>
+												<li><a class="articuloBold" href="/art?n=35">Artículo 35</a></li>
+												<li><a class="articuloBold" href="/art?n=36">Artículo 36</a></li>
+												<li><a class="articuloBold" href="/art?n=37">Artículo 37</a></li>
+												<li><a class="articuloBold" href="/art?n=38">Artículo 38</a></li>
+											</ul>
+											</li>
+							
+										</ul>
+										</li>
+										<li><a href="#">Capítulo III. De los principios rectores de la política social y económica</a>
+										<ul{% if capitulo == "Capítulo III" %} class="open" {% endif %}>
+											<li><a class="articuloBold" href="/art?n=39">Artículo 39</a></li>
+											<li><a class="articuloBold" href="/art?n=40">Artículo 40</a></li>
+											<li><a class="articuloBold" href="/art?n=41">Artículo 41</a></li>
+											<li><a class="articuloBold" href="/art?n=42">Artículo 42</a></li>
+											<li><a class="articuloBold" href="/art?n=43">Artículo 43</a></li>
+											<li><a class="articuloBold" href="/art?n=44">Artículo 44</a></li>
+											<li><a class="articuloBold" href="/art?n=45">Artículo 45</a></li>
+											<li><a class="articuloBold" href="/art?n=46">Artículo 46</a></li>
+											<li><a class="articuloBold" href="/art?n=47">Artículo 47</a></li>
+											<li><a class="articuloBold" href="/art?n=48">Artículo 48</a></li>
+											<li><a class="articuloBold" href="/art?n=49">Artículo 49</a></li>	
+											<li><a class="articuloBold" href="/art?n=50">Artículo 50</a></li>
+											<li><a class="articuloBold" href="/art?n=51">Artículo 51</a></li>
+											<li><a class="articuloBold" href="/art?n=52">Artículo 52</a></li>
+										</ul>
+										</li>
+										<li><a href="#">Capítulo IV. De las garantías de las libertades y los derechos humanos</a>
+										<ul{% if capitulo == "Capítulo IV" %} class="open" {% endif %}>
+											<li><a class="articuloBold" href="/art?n=53">Artículo 53</a></li>
+											<li><a class="articuloBold" href="/art?n=54">Artículo 54</a></li>					
+										</ul>
+										</li>
+		
+										<li><a href="#">Capítulo V. De la suspensión de los derechos y libertades</a>
+										<ul{% if capitulo == "Capítulo V" %} class="open" {% endif %}>
+											<li><a class="articuloBold" href="/art?n=55">Artículo 55</a></li>
+										</ul>
+										</li>
+									</ul>
+								</li>
+								<li><a href="#">Título II. De la corona</a>
+									<ul{% if titulo == "Título II" %} class="open" {% endif %}>
+										<li><a class="articuloBold" href="/art?n=56">Artículo 56</a></li>
+										<li><a class="articuloBold" href="/art?n=57">Artículo 57</a></li>
+										<li><a class="articuloBold" href="/art?n=58">Artículo 58</a></li>
+										<li><a class="articuloBold" href="/art?n=59">Artículo 19</a></li>
+										<li><a class="articuloBold" href="/art?n=60">Artículo 60</a></li>
+										<li><a class="articuloBold" href="/art?n=61">Artículo 61</a></li>
+										<li><a class="articuloBold" href="/art?n=62">Artículo 62</a></li>
+										<li><a class="articuloBold" href="/art?n=63">Artículo 63</a></li>
+										<li><a class="articuloBold" href="/art?n=64">Artículo 64</a></li>
+										<li><a class="articuloBold" href="/art?n=65">Artículo 65</a></li>
+									</ul>
+								</li>
+								<li><a href="#">Título III. </a>
+									<ul{% if titulo == "Título III" %} class="open" {% endif %}>
+										<li><a href="#">Submenu 1</a></li>
+										<li><a href="#">Submenu 2</a></li>
+										<li><a href="#">Submenu 3</a></li>
+										<li><a href="#">Submenu 4</a></li>
+									</ul>
+								</li>
+								<li><a href="#">Título IV. </a>
+									<ul{% if titulo == "Título IV" %} class="open" {% endif %}>
+										<li><a href="#">Submenu 1</a></li>
+										<li><a href="#">Submenu 2</a></li>
+										<li><a href="#">Submenu 3</a></li>
+										<li><a href="#">Submenu 4</a></li>
+									</ul>
+								</li>
+								<li><a href="#">Título V. De las relaciones con entre el gobierno y las Cortes Generales</a>
+									<ul{% if titulo == "Título V" %} class="open" {% endif %}>
+										<li><a href="#">Submenu 1</a></li>
+										<li><a href="#">Submenu 2</a></li>
+										<li><a href="#">Submenu 3</a></li>
+										<li><a href="#">Submenu 4</a></li>
+									</ul>
+								</li>
+								<li><a href="#">Título VI. </a>
+									<ul{% if titulo == "Título VI" %} class="open" {% endif %}>
+										<li><a href="#">Submenu 1</a></li>
+										<li><a href="#">Submenu 2</a></li>
+										<li><a href="#">Submenu 3</a></li>
+										<li><a href="#">Submenu 4</a></li>
+									</ul>
+								</li>
+								<li><a href="#">Título VII. </a>
+									<ul{% if titulo == "Título VII" %} class="open" {% endif %}>
+										<li><a href="#">Submenu 1</a></li>
+										<li><a href="#">Submenu 2</a></li>
+										<li><a href="#">Submenu 3</a></li>
+										<li><a href="#">Submenu 4</a></li>
+									</ul>
+								</li>
+								<li><a href="#">Título VIII. </a>
+									<ul{% if titulo == "Título VIII" %} class="open" {% endif %}>
+										<li><a href="#">Submenu 1</a></li>
+										<li><a href="#">Submenu 2</a></li>
+										<li><a href="#">Submenu 3</a></li>
+										<li><a href="#">Submenu 4</a></li>
+									</ul>
+								</li>
+								<li><a href="#">Título IX. </a>
+									<ul{% if titulo == "Título IX" %} class="open" {% endif %}>
+										<li><a href="#">Submenu 1</a></li>
+										<li><a href="#">Submenu 2</a></li>
+										<li><a href="#">Submenu 3</a></li>
+										<li><a href="#">Submenu 4</a></li>
+									</ul>
+								</li>
+								<li><a href="#">Título X. </a>
+									<ul{% if titulo == "Título X" %} class="open" {% endif %}>
+										<li><a href="#">Submenu 1</a></li>
+										<li><a href="#">Submenu 2</a></li>
+										<li><a href="#">Submenu 3</a></li>
+										<li><a href="#">Submenu 4</a></li>
+									</ul>
+								</li>
+
+								</ul>
+							</section>
+						</div>					
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+</body>
+</html>

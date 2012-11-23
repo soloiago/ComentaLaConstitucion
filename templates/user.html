@@ -1,0 +1,17 @@
+{% extends "baseClc.html" %}
+
+{% block content %}
+
+{% for c in comments %}
+<p>Artículo {{c.numero}} - {{c.created}}</p>
+<p>{{c.comment}}</p>
+{% if c.replyComment != 0 %}
+<p> En respuesta a: </p>
+{% endif %}
+<br />
+{% endfor %}
+
+
+{% endblock %}
+
+

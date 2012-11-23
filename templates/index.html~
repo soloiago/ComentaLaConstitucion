@@ -1,0 +1,10 @@
+{% extends "baseClc.html" %}
+
+{% block content %}
+<p>Artículo más comentado: <a href="/art?n={{mostCommentedArticle}}">Artículo {{mostCommentedArticle}}</p>
+<p>Artículo con mejor nota: </p>
+<p>Artículo con peor nota: </p>
+
+{% endblock %}
+
+

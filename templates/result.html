@@ -1,0 +1,16 @@
+{% extends "baseClc.html" %}
+
+{% block content %}
+
+{% for a in articulosMatched %}
+<p><a href="/art?n={{a.numero}}">Artículo {{a.numero}}</a></p>
+<p>
+{{a.articulo}}
+</p>
+<br />
+{% endfor %}
+
+
+{% endblock %}
+
+
